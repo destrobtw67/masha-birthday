@@ -366,17 +366,28 @@
       img.remove();
     };
 
+    const photoReady = () => {
+      if (frame) frame.classList.remove("is-loading");
+    };
+
     const nextSource = () => {
       if (attempt >= extensions.length) {
         fail();
         return;
       }
+      if (frame) frame.classList.add("is-loading");
       img.src = `${base}.${extensions[attempt]}`;
       attempt += 1;
     };
 
+    img.addEventListener("load", photoReady);
     img.addEventListener("error", nextSource);
-    if (img.complete && img.naturalWidth === 0) nextSource();
+
+    if (frame) frame.classList.add("is-loading");
+    if (img.complete) {
+      if (img.naturalWidth > 0) photoReady();
+      else nextSource();
+    }
   });
 
   /* ---------- фото крупно ---------- */
@@ -397,6 +408,7 @@
     lightboxTrigger = trigger;
     lightboxImg.src = photo.currentSrc || photo.src;
     lightboxImg.alt = photo.alt || "";
+    lightboxImg.classList.add("is-loading");
     if (lightboxCaption) {
       const caption = trigger.closest(".polaroid")?.querySelector("figcaption");
       lightboxCaption.textContent = caption ? caption.textContent.trim() : "";
@@ -450,6 +462,7 @@
     });
   }
   if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+  if (lightboxImg) lightboxImg.addEventListener("load", () => lightboxImg.classList.remove("is-loading"));
 
   /* ---------- фото в кнопке «на главную» ---------- */
 
