@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>С днём рождения, Машенька ♥</title>
+  <meta name="description" content="Маленький сайт-подарок для самой любимой девочки: звёзды, свечи, письмо и кое-что важное.">
+  <meta name="theme-color" content="#090611">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%23ff5d8f' d='M16 28S4 20.4 4 12a7 7 0 0 1 12-4.9A7 7 0 0 1 28 12c0 8.4-12 16-12 16Z'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@300;400;500;600;700;800&family=Marck+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- фон -->
+  <div class="bg" aria-hidden="true">
+    <div class="bg__orb bg__orb--1"></div>
+    <div class="bg__orb bg__orb--2"></div>
+    <div class="bg__orb bg__orb--3"></div>
+    <div class="bg__vignette"></div>
+  </div>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+
+  <header class="site-head" id="head">
+    <a class="brand" href="#top" title="На главную">
+      <span class="brand__mark">
+        <span class="brand__mono" aria-hidden="true">М</span>
+        <img class="brand__ava" src="photos/ava.jpg" alt="" aria-hidden="true" hidden>
+      </span>
+      <span class="brand__text">для Маши</span>
+    </a>
+    <nav class="nav" aria-label="Разделы сайта">
+      <a href="#cake">Свечи</a>
+      <a href="#reasons">Причины</a>
+      <a href="#letter">Письмо</a>
+      <a href="#gift">Подарок</a>
+    </nav>
+    <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Музыка — включить" title="Музыка — включить">
+      <span class="sound__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="sound__label">музыка</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero__halo" aria-hidden="true">
+        <span class="hero__dot hero__dot--1"></span>
+        <span class="hero__dot hero__dot--2"></span>
+        <span class="hero__dot hero__dot--3"></span>
+      </div>
+      <div class="hero__hearts" id="heroHearts" aria-hidden="true"></div>
+
+      <div class="hero__inner">
+        <p class="eyebrow reveal">сегодня — самый тёплый день в году</p>
+        <h1 class="hero__title">
+          <span class="hero__pre reveal" style="--d:.08s">С днём рождения,</span>
+          <span class="hero__name reveal" style="--d:.16s">Маха</span>
+        </h1>
+        <p class="hero__script reveal" style="--d:.24s">моей самой любимой</p>
+        <div class="hero__actions reveal" style="--d:.32s">
+          <a class="btn btn--primary" href="#cake">
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3c2.8 3.4 4.6 6 4.6 8.4A4.6 4.6 0 0 1 12 16a4.6 4.6 0 0 1-4.6-4.6C7.4 9 9.2 6.4 12 3Z" fill="currentColor"/>
+              <path d="M12 16v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            Задуть свечи
+          </a>
+          <a class="btn btn--ghost" href="#letter">
+            Открыть письмо
+            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M4 7h16v10H4z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="m4 8 8 5.5L20 8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <p class="hero__hint reveal" style="--d:.5s">
+          <span class="mouse" aria-hidden="true"><i></i></span>
+          листай — дальше спрятано кое-что важное
+        </p>
+      </div>
+    </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>люблю <i>✦</i> смех <i>✦</i> забота <i>✦</i> приключения <i>✦</i> нежность <i>✦</i> тепло <i>✦</i></span>
+        <span>люблю <i>✦</i> смех <i>✦</i> забота <i>✦</i> приключения <i>✦</i> нежность <i>✦</i> тепло <i>✦</i></span>
+      </div>
+    </div>
+
+    <!-- ============ ТОРТ ============ -->
+    <section class="section cake" id="cake">
+      <div class="wrap">
+        <div class="cake-grid">
+          <div class="cake-copy">
+            <p class="kicker reveal">загадай самое главное</p>
+            <h2 class="reveal">Одно желание —<br><em>и пять свечей</em></h2>
+            <p class="section-sub reveal">
+              Закрой глаза, загадай то, чего хочешь больше всего, и задуй свечи.
+              А я договорюсь с Вселенной о деталях.
+            </p>
+          </div>
+
+          <div class="cake-stage reveal">
+            <span class="cake-spark cake-spark--1" aria-hidden="true">✦</span>
+            <span class="cake-spark cake-spark--2" aria-hidden="true">✧</span>
+            <span class="cake-spark cake-spark--3" aria-hidden="true">✦</span>
+
+            <svg class="cake-svg" id="cakeSvg" viewBox="0 0 440 480" role="img" aria-label="Праздничный торт с пятью свечами">
+  <defs>
+    <linearGradient id="plateGold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffedc2"/>
+      <stop offset=".35" stop-color="#f7d391"/>
+      <stop offset=".72" stop-color="#dda65a"/>
+      <stop offset="1" stop-color="#b97a36"/>
+    </linearGradient>
+    <linearGradient id="plateInner" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf9"/>
+      <stop offset=".58" stop-color="#fff5e6"/>
+      <stop offset="1" stop-color="#f4ddbd"/>
+    </linearGradient>
+    <linearGradient id="tierBottom" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffc4d8"/>
+      <stop offset=".16" stop-color="#ffa6c4"/>
+      <stop offset=".45" stop-color="#fb8bb2"/>
+      <stop offset=".72" stop-color="#ef74a0"/>
+      <stop offset=".9" stop-color="#dd5c88"/>
+      <stop offset="1" stop-color="#c84874"/>
+    </linearGradient>
+    <linearGradient id="tierMid" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffd9e5"/>
+      <stop offset=".18" stop-color="#ffc2d5"/>
+      <stop offset=".5" stop-color="#fbaac3"/>
+      <stop offset=".78" stop-color="#f090b0"/>
+      <stop offset="1" stop-color="#dd7498"/>
+    </linearGradient>
+    <linearGradient id="tierTop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fffafb"/>
+      <stop offset=".2" stop-color="#fff0f5"/>
+      <stop offset=".52" stop-color="#ffe0ea"/>
+      <stop offset=".8" stop-color="#fbc8d8"/>
+      <stop offset="1" stop-color="#eab0c5"/>
+    </linearGradient>
+    <linearGradient id="tierShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4a0c25" stop-opacity=".18"/>
+      <stop offset=".14" stop-color="#4a0c25" stop-opacity="0"/>
+      <stop offset=".8" stop-color="#3d071d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#3d071d" stop-opacity=".22"/>
+    </linearGradient>
+    <linearGradient id="cream" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffefb"/>
+      <stop offset=".4" stop-color="#fff8ea"/>
+      <stop offset=".72" stop-color="#ffefd9"/>
+      <stop offset="1" stop-color="#ffe1bd"/>
+    </linearGradient>
+    <linearGradient id="creamShade" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8f3654" stop-opacity=".06"/>
+      <stop offset=".12" stop-color="#8f3654" stop-opacity="0"/>
+      <stop offset=".82" stop-color="#8f3654" stop-opacity="0"/>
+      <stop offset="1" stop-color="#8f3654" stop-opacity=".12"/>
+    </linearGradient>
+    <linearGradient id="candleLilac" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4eeff"/>
+      <stop offset=".5" stop-color="#cdb6ff"/>
+      <stop offset="1" stop-color="#a687f0"/>
+    </linearGradient>
+    <linearGradient id="candleIvory" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset=".5" stop-color="#ffe9c2"/>
+      <stop offset="1" stop-color="#e9bf7a"/>
+    </linearGradient>
+    <linearGradient id="candleRose" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffe9f0"/>
+      <stop offset=".5" stop-color="#ffb7ce"/>
+      <stop offset="1" stop-color="#e87fa7"/>
+    </linearGradient>
+    <linearGradient id="flameGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff9cc"/>
+      <stop offset=".48" stop-color="#ffd36b"/>
+      <stop offset="1" stop-color="#ff8a4a"/>
+    </linearGradient>
+    <radialGradient id="flameGlow">
+      <stop offset="0" stop-color="#ffd27d" stop-opacity=".55"/>
+      <stop offset=".55" stop-color="#ffbd63" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#ffbd63" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <filter id="softShadowSm" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+
+    <g id="flameArt">
+      <circle cx="0" cy="-16" r="14" fill="url(#flameGlow)"/>
+      <path d="M0 -34 C5.6 -26.2 8.4 -18 4.4 -12.2 C1 -7.2 -4.4 -8.4 -6.6 -14 C-8.9 -20.4 -4.2 -27.8 0 -34Z" fill="url(#flameGrad)"/>
+      <path d="M0 -24 C2.6 -18.6 3.3 -14.4 .9 -11.2 C-1 -9.9 -2.9 -12.8 -2.3 -15.7 C-1.7 -18.7 0 -21.4 0 -24Z" fill="#fff9df"/>
+    </g>
+  </defs>
+
+  <!-- подставка -->
+  <ellipse cx="220" cy="449" rx="158" ry="11" fill="#000" opacity=".45" filter="url(#softShadow)"/>
+  <ellipse cx="220" cy="437" rx="174" ry="23" fill="#a8682b" opacity=".55"/>
+  <ellipse cx="220" cy="433" rx="174" ry="23" fill="url(#plateGold)"/>
+  <ellipse cx="220" cy="431" rx="157" ry="18" fill="url(#plateInner)"/>
+  <ellipse cx="220" cy="431" rx="157" ry="18" fill="none" stroke="#e0b26a" stroke-width="1.2" opacity=".55"/>
+  <ellipse cx="220" cy="430" rx="142" ry="14.5" fill="none" stroke="#e8c48c" stroke-width="1" opacity=".45"/>
+  <ellipse cx="172" cy="427" rx="50" ry="5" fill="#fff" opacity=".38"/>
+  <ellipse cx="220" cy="430" rx="150" ry="10" fill="#8a4a2a" opacity=".26" filter="url(#softShadowSm)"/>
+
+  <!-- нижний ярус -->
+  <g>
+    <rect x="74" y="298" width="292" height="130" rx="22" fill="url(#tierBottom)"/>
+    <rect x="74" y="298" width="292" height="130" rx="22" fill="url(#tierShade)"/>
+    <rect x="88" y="318" width="20" height="92" rx="10" fill="#fff" opacity=".18"/>
+    <path d="M82 418 Q220 436 358 418" stroke="#8e2e50" stroke-width="2.5" fill="none" opacity=".16"/>
+
+    <g>
+      <rect x="100" y="382" width="8" height="3.2" rx="1.6" fill="#ffd27d" transform="rotate(-24 104 383.6)"/>
+      <rect x="122" y="403" width="9" height="3.2" rx="1.6" fill="#cbb4ff" transform="rotate(18 126.5 404.6)"/>
+      <rect x="146" y="370" width="7" height="3" rx="1.5" fill="#fff6f8" transform="rotate(-8 149.5 371.5)"/>
+      <rect x="168" y="394" width="10" height="3.4" rx="1.7" fill="#ffd27d" transform="rotate(32 173 395.7)"/>
+      <rect x="194" y="412" width="7" height="3" rx="1.5" fill="#ff9fbd" transform="rotate(-22 197.5 413.5)"/>
+      <rect x="212" y="379" width="8" height="3.2" rx="1.6" fill="#fff6f8" transform="rotate(10 216 380.6)"/>
+      <rect x="238" y="400" width="9" height="3.2" rx="1.6" fill="#cbb4ff" transform="rotate(-35 242.5 401.6)"/>
+      <rect x="262" y="373" width="7" height="3" rx="1.5" fill="#ffd27d" transform="rotate(22 265.5 374.5)"/>
+      <rect x="282" y="408" width="10" height="3.4" rx="1.7" fill="#fff6f8" transform="rotate(-12 287 409.7)"/>
+      <rect x="306" y="386" width="8" height="3.2" rx="1.6" fill="#ff9fbd" transform="rotate(38 310 387.6)"/>
+      <rect x="330" y="404" width="7" height="3" rx="1.5" fill="#ffd27d" transform="rotate(-18 333.5 405.5)"/>
+      <rect x="348" y="377" width="8" height="3.2" rx="1.6" fill="#cbb4ff" transform="rotate(12 352 378.6)"/>
+      <circle cx="134" cy="390" r="2" fill="#ffd27d" opacity=".8"/>
+      <circle cx="222" cy="390" r="2" fill="#fff6f8" opacity=".85"/>
+      <path d="M0 -6 C.8 -1.8 1.8 -.8 6 0 C1.8 .8 .8 1.8 0 6 C-.8 1.8 -1.8 .8 -6 0 C-1.8 -.8 -.8 -1.8 0 -6Z" fill="#ffd27d" opacity=".92" transform="translate(298 368) rotate(12) scale(.75)"/>
+    </g>
+
+    <path d="M 74 298 A 146 25 0 0 1 366 298 L 366 312 L 355 312 C 355 327.6 353.6 324.9 352.2 342.0 C 351.8 346 338.2 346 337.8 342.0 C 336.4 324.9 335 327.6 335 312 Q 331.0 310.5 327 313 L 327 313 C 327 320.8 325.3 319.5 323.6 325.2 C 323.2 330 306.8 330 306.4 325.2 C 304.7 319.5 303 320.8 303 313 Q 299.0 309.5 295 311 L 295 311 C 295 325.3 293.7 322.8 292.5 338.4 C 292.1 342 279.9 342 279.5 338.4 C 278.3 322.8 277 325.3 277 311 Q 272.0 309.5 267 314 L 267 314 C 267 324.1 265.0 322.4 263.1 330.4 C 262.5 336 243.5 336 242.9 330.4 C 241.0 322.4 239 324.1 239 314 Q 235.5 311.5 232 313 L 232 313 C 232 325.4 230.3 323.3 228.6 335.2 C 228.2 340 211.8 340 211.4 335.2 C 209.7 323.3 208 325.4 208 313 Q 203.5 311.5 199 315 L 199 315 C 199 332.0 197.2 329.1 195.4 346.8 C 194.8 352 177.2 352 176.6 346.8 C 174.8 329.1 173 332.0 173 315 Q 168.0 309.5 163 311 L 163 311 C 163 318.4 161.7 317.1 160.5 323.4 C 160.1 327 147.9 327 147.5 323.4 C 146.3 317.1 145 318.4 145 311 Q 140.0 309.5 135 314 L 135 314 C 135 330.1 133.2 327.3 131.4 343.8 C 130.8 349 113.2 349 112.6 343.8 C 110.8 327.3 109 330.1 109 314 Q 106.0 310.5 103 312 L 103 312 C 103 322.1 101.5 320.4 99.9 329.6 C 99.5 334 84.5 334 84.1 329.6 C 82.5 320.4 81 322.1 81 312 L 74 312 Z" fill="url(#cream)"/>
+    <path d="M 74 298 A 146 25 0 0 1 366 298 L 366 312 L 355 312 C 355 327.6 353.6 324.9 352.2 342.0 C 351.8 346 338.2 346 337.8 342.0 C 336.4 324.9 335 327.6 335 312 Q 331.0 310.5 327 313 L 327 313 C 327 320.8 325.3 319.5 323.6 325.2 C 323.2 330 306.8 330 306.4 325.2 C 304.7 319.5 303 320.8 303 313 Q 299.0 309.5 295 311 L 295 311 C 295 325.3 293.7 322.8 292.5 338.4 C 292.1 342 279.9 342 279.5 338.4 C 278.3 322.8 277 325.3 277 311 Q 272.0 309.5 267 314 L 267 314 C 267 324.1 265.0 322.4 263.1 330.4 C 262.5 336 243.5 336 242.9 330.4 C 241.0 322.4 239 324.1 239 314 Q 235.5 311.5 232 313 L 232 313 C 232 325.4 230.3 323.3 228.6 335.2 C 228.2 340 211.8 340 211.4 335.2 C 209.7 323.3 208 325.4 208 313 Q 203.5 311.5 199 315 L 199 315 C 199 332.0 197.2 329.1 195.4 346.8 C 194.8 352 177.2 352 176.6 346.8 C 174.8 329.1 173 332.0 173 315 Q 168.0 309.5 163 311 L 163 311 C 163 318.4 161.7 317.1 160.5 323.4 C 160.1 327 147.9 327 147.5 323.4 C 146.3 317.1 145 318.4 145 311 Q 140.0 309.5 135 314 L 135 314 C 135 330.1 133.2 327.3 131.4 343.8 C 130.8 349 113.2 349 112.6 343.8 C 110.8 327.3 109 330.1 109 314 Q 106.0 310.5 103 312 L 103 312 C 103 322.1 101.5 320.4 99.9 329.6 C 99.5 334 84.5 334 84.1 329.6 C 82.5 320.4 81 322.1 81 312 L 74 312 Z" fill="url(#creamShade)"/>
+    <path d="M 88 291 A 132 19 0 0 1 352 291" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".45"/>
+    <ellipse cx="188" cy="288" rx="54" ry="7" fill="#fff" opacity=".28"/>
+  </g>
+
+  <!-- тень под средним ярусом -->
+  <ellipse cx="220" cy="306" rx="106" ry="9" fill="#8e2e50" opacity=".16" filter="url(#softShadowSm)"/>
+
+  <!-- средний ярус -->
+  <g>
+    <rect x="106" y="218" width="228" height="86" rx="18" fill="url(#tierMid)"/>
+    <rect x="106" y="218" width="228" height="86" rx="18" fill="url(#tierShade)"/>
+    <rect x="118" y="238" width="15" height="48" rx="7.5" fill="#fff" opacity=".2"/>
+    <path d="M114 300 Q220 316 326 300" stroke="#8e2e50" stroke-width="2" fill="none" opacity=".13"/>
+
+    <g>
+      <rect x="118" y="270" width="7" height="3" rx="1.5" fill="#fff6f8" transform="rotate(-20 121.5 271.5)"/>
+      <rect x="136" y="287" width="8" height="3.2" rx="1.6" fill="#ffd27d" transform="rotate(25 140 288.6)"/>
+      <rect x="158" y="262" width="6" height="3" rx="1.5" fill="#cbb4ff" transform="rotate(10 161 263.5)"/>
+      <rect x="180" y="283" width="8" height="3.2" rx="1.6" fill="#ff9fbd" transform="rotate(-32 184 284.6)"/>
+      <rect x="204" y="268" width="7" height="3" rx="1.5" fill="#fff6f8" transform="rotate(18 207.5 269.5)"/>
+      <rect x="228" y="289" width="8" height="3.2" rx="1.6" fill="#ffd27d" transform="rotate(-10 232 290.6)"/>
+      <rect x="252" y="264" width="6" height="3" rx="1.5" fill="#cbb4ff" transform="rotate(30 255 265.5)"/>
+      <rect x="276" y="282" width="8" height="3.2" rx="1.6" fill="#fff6f8" transform="rotate(-22 280 283.6)"/>
+      <rect x="300" y="268" width="7" height="3" rx="1.5" fill="#ff9fbd" transform="rotate(12 303.5 269.5)"/>
+      <rect x="318" y="288" width="6" height="3" rx="1.5" fill="#ffd27d" transform="rotate(-35 321 289.5)"/>
+      <circle cx="166" cy="280" r="1.8" fill="#ffd27d" opacity=".8"/>
+      <path d="M0 -6 C.8 -1.8 1.8 -.8 6 0 C1.8 .8 .8 1.8 0 6 C-.8 1.8 -1.8 .8 -6 0 C-1.8 -.8 -.8 -1.8 0 -6Z" fill="#ffd27d" opacity=".9" transform="translate(244 278) rotate(-14) scale(.62)"/>
+    </g>
+
+    <path d="M 106 218 A 114 20 0 0 1 334 218 L 334 232 L 330 232 C 330 237.1 328.9 236.2 327.8 239.8 C 327.4 243 316.6 243 316.2 239.8 C 315.1 236.2 314 237.1 314 232 Q 310.5 229.5 307 231 L 307 231 C 307 241.6 305.5 239.7 303.9 249.6 C 303.5 254 288.5 254 288.1 249.6 C 286.5 239.7 285 241.6 285 231 Q 281.5 229.5 278 233 L 278 233 C 278 239.4 276.7 238.3 275.5 243.4 C 275.1 247 262.9 247 262.5 243.4 C 261.3 238.3 260 239.4 260 233 Q 255.0 230.5 250 232 L 250 232 C 250 244.0 248.3 241.9 246.6 253.2 C 246.2 258 229.8 258 229.4 253.2 C 227.7 241.9 226 244.0 226 232 Q 222.5 230.5 219 234 L 219 234 C 219 241.4 217.5 240.1 215.9 245.6 C 215.5 250 200.5 250 200.1 245.6 C 198.5 240.1 197 241.4 197 234 Q 191.0 229.5 185 231 L 185 231 C 185 236.1 183.9 235.2 182.8 238.8 C 182.4 242 171.6 242 171.2 238.8 C 170.1 235.2 169 236.1 169 231 Q 164.0 229.5 159 233 L 159 233 C 159 242.2 157.5 240.6 155.9 248.6 C 155.5 253 140.5 253 140.1 248.6 C 138.5 240.6 137 242.2 137 233 Q 134.0 230.5 131 232 L 131 232 C 131 238.4 129.7 237.3 128.5 242.4 C 128.1 246 115.9 246 115.5 242.4 C 114.3 237.3 113 238.4 113 232 L 106 232 Z" fill="url(#cream)"/>
+    <path d="M 106 218 A 114 20 0 0 1 334 218 L 334 232 L 330 232 C 330 237.1 328.9 236.2 327.8 239.8 C 327.4 243 316.6 243 316.2 239.8 C 315.1 236.2 314 237.1 314 232 Q 310.5 229.5 307 231 L 307 231 C 307 241.6 305.5 239.7 303.9 249.6 C 303.5 254 288.5 254 288.1 249.6 C 286.5 239.7 285 241.6 285 231 Q 281.5 229.5 278 233 L 278 233 C 278 239.4 276.7 238.3 275.5 243.4 C 275.1 247 262.9 247 262.5 243.4 C 261.3 238.3 260 239.4 260 233 Q 255.0 230.5 250 232 L 250 232 C 250 244.0 248.3 241.9 246.6 253.2 C 246.2 258 229.8 258 229.4 253.2 C 227.7 241.9 226 244.0 226 232 Q 222.5 230.5 219 234 L 219 234 C 219 241.4 217.5 240.1 215.9 245.6 C 215.5 250 200.5 250 200.1 245.6 C 198.5 240.1 197 241.4 197 234 Q 191.0 229.5 185 231 L 185 231 C 185 236.1 183.9 235.2 182.8 238.8 C 182.4 242 171.6 242 171.2 238.8 C 170.1 235.2 169 236.1 169 231 Q 164.0 229.5 159 233 L 159 233 C 159 242.2 157.5 240.6 155.9 248.6 C 155.5 253 140.5 253 140.1 248.6 C 138.5 240.6 137 242.2 137 233 Q 134.0 230.5 131 232 L 131 232 C 131 238.4 129.7 237.3 128.5 242.4 C 128.1 246 115.9 246 115.5 242.4 C 114.3 237.3 113 238.4 113 232 L 106 232 Z" fill="url(#creamShade)"/>
+    <path d="M 118 212 A 102 16 0 0 1 322 212" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".45"/>
+    <ellipse cx="196" cy="209" rx="40" ry="5.5" fill="#fff" opacity=".28"/>
+  </g>
+
+  <!-- тень под верхним ярусом -->
+  <ellipse cx="220" cy="228" rx="68" ry="6" fill="#8e2e50" opacity=".14" filter="url(#softShadowSm)"/>
+
+  <!-- верхний ярус -->
+  <g>
+    <rect x="146" y="148" width="148" height="78" rx="16" fill="url(#tierTop)"/>
+    <rect x="146" y="148" width="148" height="78" rx="16" fill="url(#tierShade)"/>
+    <rect x="156" y="164" width="12" height="44" rx="6" fill="#fff" opacity=".32"/>
+    <path d="M154 220 Q220 232 286 220" stroke="#8e2e50" stroke-width="1.8" fill="none" opacity=".12"/>
+
+    <g>
+      <rect x="160" y="202" width="6" height="3" rx="1.5" fill="#ffd27d" transform="rotate(-18 163 203.5)"/>
+      <rect x="178" y="212" width="7" height="3" rx="1.5" fill="#cbb4ff" transform="rotate(22 181.5 213.5)"/>
+      <rect x="198" y="196" width="5" height="2.8" rx="1.4" fill="#fff6f8" transform="rotate(-5 200.5 197.4)"/>
+      <rect x="218" y="214" width="7" height="3" rx="1.5" fill="#ff9fbd" transform="rotate(32 221.5 215.5)"/>
+      <rect x="240" y="198" width="6" height="3" rx="1.5" fill="#ffd27d" transform="rotate(-25 243 199.5)"/>
+      <rect x="260" y="212" width="6" height="3" rx="1.5" fill="#fff6f8" transform="rotate(12 263 213.5)"/>
+      <rect x="278" y="200" width="5" height="2.8" rx="1.4" fill="#cbb4ff" transform="rotate(-38 280.5 201.4)"/>
+      <circle cx="188" cy="206" r="1.5" fill="#ffd27d" opacity=".8"/>
+      <path d="M0 -6 C.8 -1.8 1.8 -.8 6 0 C1.8 .8 .8 1.8 0 6 C-.8 1.8 -1.8 .8 -6 0 C-1.8 -.8 -.8 -1.8 0 -6Z" fill="#ffd27d" opacity=".9" transform="translate(252 204) rotate(16) scale(.62)"/>
+    </g>
+
+    <path d="M 146 148 A 74 17 0 0 1 294 148 L 294 159 L 288 159 C 288 164.5 286.9 163.6 285.8 167.8 C 285.4 171 274.6 171 274.2 167.8 C 273.1 163.6 272 164.5 272 159 Q 269.5 157.5 267 160 L 267 160 C 267 167.4 265.7 166.1 264.5 172.4 C 264.1 176 251.9 176 251.5 172.4 C 250.3 166.1 249 167.4 249 160 Q 246.5 158.5 244 161 L 244 161 C 244 171.1 242.5 169.4 240.9 178.6 C 240.5 183 225.5 183 225.1 178.6 C 223.5 169.4 222 171.1 222 161 Q 219.0 157.5 216 159 L 216 159 C 216 165.4 214.9 164.3 213.8 169.8 C 213.4 173 202.6 173 202.2 169.8 C 201.1 164.3 200 165.4 200 159 Q 196.5 157.5 193 161 L 193 161 C 193 170.2 191.6 168.6 190.2 177.0 C 189.8 181 176.2 181 175.8 177.0 C 174.4 168.6 173 170.2 173 161 Q 170.5 158.5 168 160 L 168 160 C 168 166.4 166.9 165.3 165.8 170.8 C 165.4 174 154.6 174 154.2 170.8 C 153.1 165.3 152 166.4 152 160 L 146 160 Z" fill="url(#cream)"/>
+    <path d="M 146 148 A 74 17 0 0 1 294 148 L 294 159 L 288 159 C 288 164.5 286.9 163.6 285.8 167.8 C 285.4 171 274.6 171 274.2 167.8 C 273.1 163.6 272 164.5 272 159 Q 269.5 157.5 267 160 L 267 160 C 267 167.4 265.7 166.1 264.5 172.4 C 264.1 176 251.9 176 251.5 172.4 C 250.3 166.1 249 167.4 249 160 Q 246.5 158.5 244 161 L 244 161 C 244 171.1 242.5 169.4 240.9 178.6 C 240.5 183 225.5 183 225.1 178.6 C 223.5 169.4 222 171.1 222 161 Q 219.0 157.5 216 159 L 216 159 C 216 165.4 214.9 164.3 213.8 169.8 C 213.4 173 202.6 173 202.2 169.8 C 201.1 164.3 200 165.4 200 159 Q 196.5 157.5 193 161 L 193 161 C 193 170.2 191.6 168.6 190.2 177.0 C 189.8 181 176.2 181 175.8 177.0 C 174.4 168.6 173 170.2 173 161 Q 170.5 158.5 168 160 L 168 160 C 168 166.4 166.9 165.3 165.8 170.8 C 165.4 174 154.6 174 154.2 170.8 C 153.1 165.3 152 166.4 152 160 L 146 160 Z" fill="url(#creamShade)"/>
+    <path d="M 154 142 A 66 13 0 0 1 286 142" fill="none" stroke="#fff" stroke-width="1.3" stroke-linecap="round" opacity=".45"/>
+    <ellipse cx="200" cy="140" rx="24" ry="4" fill="#fff" opacity=".3"/>
+  </g>
+
+  <!-- свечи -->
+  <g class="candle" style="--fd:-.2s" transform="translate(174 163)">
+    <ellipse cx="0" cy="2" rx="10" ry="3.6" fill="#7a2c49" opacity=".22"/>
+    <rect x="-6.5" y="-52" width="13" height="52" rx="6.5" fill="url(#candleLilac)"/>
+    <rect x="-4.2" y="-48" width="2.2" height="43" rx="1.1" fill="#fff" opacity=".4"/>
+    <ellipse cx="0" cy="-52" rx="6.5" ry="2.3" fill="#f7f0ff"/>
+    <path d="M-6.5 -40 h13" stroke="#f4c77c" stroke-width="2.4" opacity=".8"/>
+    <path d="M-6.5 -26 h13" stroke="#f4c77c" stroke-width="2.4" opacity=".8"/>
+    <line x1="0" y1="-52" x2="0" y2="-59" stroke="#4a2b39" stroke-width="2.2" stroke-linecap="round"/>
+    <g transform="translate(0 -59)">
+      <g class="flame"><use href="#flameArt" transform="scale(.92)"/></g>
+    </g>
+    <g class="smoke" transform="translate(0 -59)" fill="#e6d8ea">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.35s"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.7s"/>
+    </g>
+  </g>
+
+  <g class="candle" style="--fd:-.6s" transform="translate(197 166)">
+    <ellipse cx="0" cy="2" rx="10" ry="3.6" fill="#7a2c49" opacity=".22"/>
+    <rect x="-6.5" y="-64" width="13" height="64" rx="6.5" fill="url(#candleIvory)"/>
+    <rect x="-4.2" y="-60" width="2.2" height="55" rx="1.1" fill="#fff" opacity=".38"/>
+    <ellipse cx="0" cy="-64" rx="6.5" ry="2.3" fill="#fffaf0"/>
+    <path d="M-6.5 -50 h13" stroke="#e88aa9" stroke-width="2.4" opacity=".8"/>
+    <path d="M-6.5 -34 h13" stroke="#e88aa9" stroke-width="2.4" opacity=".8"/>
+    <line x1="0" y1="-64" x2="0" y2="-71" stroke="#4a2b39" stroke-width="2.2" stroke-linecap="round"/>
+    <g transform="translate(0 -71)">
+      <g class="flame"><use href="#flameArt" transform="scale(.98)"/></g>
+    </g>
+    <g class="smoke" transform="translate(0 -71)" fill="#e6d8ea">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.35s"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.7s"/>
+    </g>
+  </g>
+
+  <g class="candle" style="--fd:-1s" transform="translate(220 167)">
+    <ellipse cx="0" cy="2" rx="10.5" ry="3.8" fill="#7a2c49" opacity=".22"/>
+    <rect x="-6.5" y="-76" width="13" height="76" rx="6.5" fill="url(#candleRose)"/>
+    <rect x="-4.2" y="-72" width="2.2" height="67" rx="1.1" fill="#fff" opacity=".36"/>
+    <ellipse cx="0" cy="-76" rx="6.5" ry="2.3" fill="#ffeef4"/>
+    <path d="M-6.5 -62 h13" stroke="#fff4dc" stroke-width="2.4" opacity=".9"/>
+    <path d="M-6.5 -44 h13" stroke="#fff4dc" stroke-width="2.4" opacity=".9"/>
+    <path d="M-6.5 -26 h13" stroke="#fff4dc" stroke-width="2.4" opacity=".9"/>
+    <line x1="0" y1="-76" x2="0" y2="-83" stroke="#4a2b39" stroke-width="2.2" stroke-linecap="round"/>
+    <g transform="translate(0 -83)">
+      <g class="flame"><use href="#flameArt" transform="scale(1.04)"/></g>
+    </g>
+    <g class="smoke" transform="translate(0 -83)" fill="#e6d8ea">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.35s"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.7s"/>
+    </g>
+  </g>
+
+  <g class="candle" style="--fd:-.4s" transform="translate(243 166)">
+    <ellipse cx="0" cy="2" rx="10" ry="3.6" fill="#7a2c49" opacity=".22"/>
+    <rect x="-6.5" y="-64" width="13" height="64" rx="6.5" fill="url(#candleIvory)"/>
+    <rect x="-4.2" y="-60" width="2.2" height="55" rx="1.1" fill="#fff" opacity=".38"/>
+    <ellipse cx="0" cy="-64" rx="6.5" ry="2.3" fill="#fffaf0"/>
+    <path d="M-6.5 -50 h13" stroke="#e88aa9" stroke-width="2.4" opacity=".8"/>
+    <path d="M-6.5 -34 h13" stroke="#e88aa9" stroke-width="2.4" opacity=".8"/>
+    <line x1="0" y1="-64" x2="0" y2="-71" stroke="#4a2b39" stroke-width="2.2" stroke-linecap="round"/>
+    <g transform="translate(0 -71)">
+      <g class="flame"><use href="#flameArt" transform="scale(.98)"/></g>
+    </g>
+    <g class="smoke" transform="translate(0 -71)" fill="#e6d8ea">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.35s"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.7s"/>
+    </g>
+  </g>
+
+  <g class="candle" style="--fd:-.8s" transform="translate(266 163)">
+    <ellipse cx="0" cy="2" rx="10" ry="3.6" fill="#7a2c49" opacity=".22"/>
+    <rect x="-6.5" y="-52" width="13" height="52" rx="6.5" fill="url(#candleLilac)"/>
+    <rect x="-4.2" y="-48" width="2.2" height="43" rx="1.1" fill="#fff" opacity=".4"/>
+    <ellipse cx="0" cy="-52" rx="6.5" ry="2.3" fill="#f7f0ff"/>
+    <path d="M-6.5 -40 h13" stroke="#f4c77c" stroke-width="2.4" opacity=".8"/>
+    <path d="M-6.5 -26 h13" stroke="#f4c77c" stroke-width="2.4" opacity=".8"/>
+    <line x1="0" y1="-52" x2="0" y2="-59" stroke="#4a2b39" stroke-width="2.2" stroke-linecap="round"/>
+    <g transform="translate(0 -59)">
+      <g class="flame"><use href="#flameArt" transform="scale(.92)"/></g>
+    </g>
+    <g class="smoke" transform="translate(0 -59)" fill="#e6d8ea">
+      <circle cx="0" cy="0" r="3"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.35s"/>
+      <circle cx="0" cy="0" r="3" style="--sd:.7s"/>
+    </g>
+  </g>
+</svg>
+
+            <div class="cake-controls">
+              <button class="btn btn--primary" id="blowBtn" type="button">
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 3c2.8 3.4 4.6 6 4.6 8.4A4.6 4.6 0 0 1 12 16a4.6 4.6 0 0 1-4.6-4.6C7.4 9 9.2 6.4 12 3Z" fill="currentColor"/>
+                  <path d="M12 16v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <span id="blowLabel">Задуть свечи</span>
+              </button>
+              <p class="cake-note" id="cakeNote" role="status" aria-live="polite">Пять из пяти свечей горят. Пора загадывать.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ПРИЧИНЫ ============ -->
+    <section class="section reasons-section" id="reasons">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker reveal">мой личный список</p>
+          <h2 class="reveal">За что я тебя <em>люблю</em></h2>
+          <p class="section-sub reveal">Можно было написать сто пунктов, но я выбрал шесть. Сто не поместились бы на страницу.</p>
+        </div>
+
+        <div class="reasons">
+          <article class="reason reveal">
+            <span class="reason__num" aria-hidden="true">01</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M8.5 14.5s1.2 2 3.5 2 3.5-2 3.5-2M9 9.5h.01M15 9.5h.01"/>
+              </svg>
+            </span>
+            <h3>За твой смех</h3>
+            <p>Я узнаю твой смех из сотни других — и всё равно каждый раз оборачиваюсь.</p>
+          </article>
+
+          <article class="reason reveal" style="--d:.06s">
+            <span class="reason__num" aria-hidden="true">02</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </span>
+            <h3>За твои глаза</h3>
+            <p>Голубые. Я иногда смотрю в них дольше, чем собирался, и забываю, о чём мы говорили.</p>
+          </article>
+
+          <article class="reason reveal" style="--d:.12s">
+            <span class="reason__num" aria-hidden="true">03</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/>
+              </svg>
+            </span>
+            <h3>За твою заботу</h3>
+            <p>Ты замечаешь мелочи, которые меняют всё. Рядом с тобой мир становится мягче — это факт.</p>
+          </article>
+
+          <article class="reason reveal" style="--d:.18s">
+            <span class="reason__num" aria-hidden="true">04</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/>
+                <path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16Z"/>
+              </svg>
+            </span>
+            <h3>За то, что ты — ты</h3>
+            <p>Без масок, без фильтров, без «идеальной» версии. Настоящая. Моя любимая.</p>
+          </article>
+
+          <article class="reason reveal" style="--d:.24s">
+            <span class="reason__num" aria-hidden="true">05</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h11v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z"/>
+                <path d="M15 9h2a3 3 0 0 1 0 6h-2M7 3v2M11 3v2"/>
+              </svg>
+            </span>
+            <h3>За наши вечера</h3>
+            <p>Даже обычный вторник с тобой пахнет приключением и чем-то вкусным. Обычно — тобой.</p>
+          </article>
+
+          <article class="reason reveal" style="--d:.3s">
+            <span class="reason__num" aria-hidden="true">06</span>
+            <span class="reason__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/>
+              </svg>
+            </span>
+            <h3>За будущее</h3>
+            <p>Я не знаю, что будет завтра, но точно знаю, с кем хочу это узнать. С тобой.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ГАЛЕРЕЯ ============ -->
+    <!-- Чтобы добавить настоящие фото, положи их в папку photos как 1.jpg, 2.jpg и 3.jpg -->
+    <section class="section gallery" id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker reveal">наши моменты</p>
+          <h2 class="reveal">То, что я <em>берегу</em></h2>
+          <p class="section-sub reveal">Три кадра, которые я бы забрал с собой на необитаемый остров. И тебя, конечно.</p>
+        </div>
+
+        <div class="polaroids">
+          <figure class="polaroid reveal" style="--r:-3.5deg">
+            <div class="polaroid__photo">
+              <img src="photos/1.jpg" alt="Наш момент: мы смеёмся у стены" loading="lazy">
+              <div class="polaroid__fallback" aria-hidden="true"><span>📸</span><small>твой кадр</small></div>
+            </div>
+            <figcaption>дурачимся</figcaption>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r:1.8deg;--d:.1s">
+            <div class="polaroid__photo">
+              <img src="photos/2.jpg" alt="Наш момент: мы в спортзале" loading="lazy">
+              <div class="polaroid__fallback" aria-hidden="true"><span>🏋️</span><small>твой кадр</small></div>
+            </div>
+            <figcaption>между подходами <span>серьёзных людей не вышло</span></figcaption>
+          </figure>
+
+          <figure class="polaroid reveal" style="--r:3deg;--d:.2s">
+            <div class="polaroid__photo">
+              <img src="photos/3.jpg" alt="Наш момент: чёрно-белый кадр, я целую тебя" loading="lazy">
+              <div class="polaroid__fallback" aria-hidden="true"><span>🖤</span><small>твой кадр</small></div>
+            </div>
+            <figcaption>без слов <span>и так всё понятно</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ФОТО КРУПНО ============ -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Фотография крупно" hidden>
+      <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Закрыть фотографию">×</button>
+      <figure class="lightbox__figure">
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
+      </figure>
+    </div>
+
+    <!-- ============ ПИСЬМО ============ -->
+    <section class="section letter-section" id="letter">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker reveal">без свидетелей</p>
+          <h2 class="reveal">Письмо <em>тебе</em></h2>
+          <p class="section-sub reveal">Письмо заперто. Пароль лежит в коробочке с подарком.</p>
+        </div>
+
+        <div class="letter-scene reveal" id="letterScene">
+          <button class="envelope" id="envelope" type="button" aria-expanded="false" aria-controls="letterLock letterCard" aria-label="Открыть письмо — понадобится пароль">
+            <span class="envelope__back"></span>
+            <span class="envelope__preview"><span>тебе</span></span>
+            <span class="envelope__front"></span>
+            <span class="envelope__flap"></span>
+            <span class="envelope__seal" aria-hidden="true">♥</span>
+            <span class="envelope__hint">нажми, чтобы ввести пароль</span>
+          </button>
+
+          <div class="letter-lock" id="letterLock" role="group" aria-labelledby="letterLockTitle" hidden>
+            <button class="letter-card__close" id="letterLockClose" type="button" aria-label="Закрыть ввод пароля">×</button>
+            <span class="letter-lock__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4.5" y="10.5" width="15" height="10" rx="2.2"/>
+                <path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>
+                <path d="M12 14.5v2.2"/>
+              </svg>
+            </span>
+            <p class="letter-lock__top">письмо с секретом</p>
+            <h3 id="letterLockTitle">Пароль?</h3>
+            <p class="letter-lock__text">Он лежит в коробочке с подарком, на маленькой карточке. Введи его — и конверт откроется.</p>
+            <form class="letter-lock__form" id="letterForm" novalidate>
+              <label class="letter-lock__label" for="letterPassword">Пароль</label>
+              <div class="letter-lock__row">
+                <input class="letter-lock__input" id="letterPassword" name="password" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="слово с карточки" aria-describedby="letterLockNote" required>
+                <button class="btn btn--primary letter-lock__submit" type="submit">Открыть</button>
+              </div>
+              <p class="letter-lock__note" id="letterLockNote" role="status" aria-live="polite">Без пароля не откроется.</p>
+            </form>
+          </div>
+
+          <article class="letter-card" id="letterCard" hidden>
+            <button class="letter-card__close" id="letterClose" type="button" aria-label="Закрыть письмо">×</button>
+            <p class="letter-card__top">Маше — лично в руки</p>
+            <h3 id="letterTitle" tabindex="-1">С днём рождения, любимая.</h3>
+            <div class="letter-card__body">
+              <p>Если ты это читаешь, значит, карточка из коробочки сработала. Я специально спрятал пароль в подарке — так это письмо приходит вместе с ним, а не вместо него.</p>
+              <figure class="letter-doodle">
+                <svg class="pixel-necklace" viewBox="0 0 40 40" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <style>.px-s{fill:#cbd1dc}.px-h{fill:#f5f7fb}.px-d{fill:#8a93a4}.px-w{fill:#ffffff}.px-p{fill:#d94a8c}.px-l{fill:#ffb3d2}.px-r{fill:#9e1f58}.px-c{fill:#eef5ff}</style>
+  <g shape-rendering="crispEdges">
+<rect x="14" y="0" width="1" height="1" class="px-h"/>
+    <rect x="15" y="0" width="1" height="1" class="px-s"/>
+    <rect x="25" y="0" width="1" height="1" class="px-s"/>
+    <rect x="26" y="0" width="1" height="1" class="px-h"/>
+    <rect x="14" y="1" width="1" height="1" class="px-s"/>
+    <rect x="15" y="1" width="1" height="1" class="px-d"/>
+    <rect x="25" y="1" width="1" height="1" class="px-d"/>
+    <rect x="26" y="1" width="1" height="1" class="px-s"/>
+    <rect x="15" y="2" width="1" height="1" class="px-h"/>
+    <rect x="16" y="2" width="1" height="1" class="px-s"/>
+    <rect x="24" y="2" width="1" height="1" class="px-s"/>
+    <rect x="25" y="2" width="1" height="1" class="px-h"/>
+    <rect x="15" y="3" width="1" height="1" class="px-s"/>
+    <rect x="16" y="3" width="1" height="1" class="px-d"/>
+    <rect x="24" y="3" width="1" height="1" class="px-d"/>
+    <rect x="25" y="3" width="1" height="1" class="px-s"/>
+    <rect x="16" y="4" width="1" height="1" class="px-h"/>
+    <rect x="17" y="4" width="1" height="1" class="px-s"/>
+    <rect x="23" y="4" width="1" height="1" class="px-s"/>
+    <rect x="24" y="4" width="1" height="1" class="px-h"/>
+    <rect x="16" y="5" width="1" height="1" class="px-s"/>
+    <rect x="17" y="5" width="1" height="1" class="px-d"/>
+    <rect x="23" y="5" width="1" height="1" class="px-d"/>
+    <rect x="24" y="5" width="1" height="1" class="px-s"/>
+    <rect x="17" y="6" width="1" height="1" class="px-h"/>
+    <rect x="18" y="6" width="1" height="1" class="px-s"/>
+    <rect x="19" y="6" width="2" height="1" class="px-h"/>
+    <rect x="21" y="6" width="2" height="1" class="px-s"/>
+    <rect x="23" y="6" width="1" height="1" class="px-h"/>
+    <rect x="17" y="7" width="1" height="1" class="px-s"/>
+    <rect x="18" y="7" width="3" height="1" class="px-d"/>
+    <rect x="21" y="7" width="1" height="1" class="px-s"/>
+    <rect x="22" y="7" width="1" height="1" class="px-d"/>
+    <rect x="23" y="7" width="1" height="1" class="px-s"/>
+    <rect x="16" y="8" width="1" height="1" class="px-d"/>
+    <rect x="17" y="8" width="2" height="1" class="px-h"/>
+    <rect x="19" y="8" width="1" height="1" class="px-s"/>
+    <rect x="20" y="8" width="1" height="1" class="px-w"/>
+    <rect x="21" y="8" width="2" height="1" class="px-h"/>
+    <rect x="23" y="8" width="1" height="1" class="px-d"/>
+    <rect x="15" y="9" width="2" height="1" class="px-h"/>
+    <rect x="17" y="9" width="4" height="1" class="px-s"/>
+    <rect x="21" y="9" width="1" height="1" class="px-w"/>
+    <rect x="22" y="9" width="3" height="1" class="px-s"/>
+    <rect x="14" y="10" width="1" height="1" class="px-d"/>
+    <rect x="15" y="10" width="1" height="1" class="px-s"/>
+    <rect x="16" y="10" width="1" height="1" class="px-w"/>
+    <rect x="17" y="10" width="2" height="1" class="px-s"/>
+    <rect x="19" y="10" width="2" height="1" class="px-r"/>
+    <rect x="21" y="10" width="4" height="1" class="px-s"/>
+    <rect x="25" y="10" width="1" height="1" class="px-d"/>
+    <rect x="14" y="11" width="1" height="1" class="px-h"/>
+    <rect x="15" y="11" width="2" height="1" class="px-s"/>
+    <rect x="17" y="11" width="1" height="1" class="px-r"/>
+    <rect x="18" y="11" width="1" height="1" class="px-p"/>
+    <rect x="19" y="11" width="1" height="1" class="px-l"/>
+    <rect x="20" y="11" width="2" height="1" class="px-p"/>
+    <rect x="22" y="11" width="1" height="1" class="px-r"/>
+    <rect x="23" y="11" width="3" height="1" class="px-s"/>
+    <rect x="13" y="12" width="1" height="1" class="px-d"/>
+    <rect x="14" y="12" width="2" height="1" class="px-s"/>
+    <rect x="16" y="12" width="1" height="1" class="px-r"/>
+    <rect x="17" y="12" width="3" height="1" class="px-p"/>
+    <rect x="20" y="12" width="1" height="1" class="px-l"/>
+    <rect x="21" y="12" width="2" height="1" class="px-p"/>
+    <rect x="23" y="12" width="1" height="1" class="px-r"/>
+    <rect x="24" y="12" width="2" height="1" class="px-s"/>
+    <rect x="26" y="12" width="1" height="1" class="px-d"/>
+    <rect x="13" y="13" width="3" height="1" class="px-s"/>
+    <rect x="16" y="13" width="2" height="1" class="px-p"/>
+    <rect x="18" y="13" width="3" height="1" class="px-l"/>
+    <rect x="21" y="13" width="3" height="1" class="px-p"/>
+    <rect x="24" y="13" width="3" height="1" class="px-s"/>
+    <rect x="11" y="14" width="2" height="1" class="px-h"/>
+    <rect x="13" y="14" width="3" height="1" class="px-s"/>
+    <rect x="16" y="14" width="2" height="1" class="px-p"/>
+    <rect x="18" y="14" width="3" height="1" class="px-l"/>
+    <rect x="21" y="14" width="1" height="1" class="px-p"/>
+    <rect x="22" y="14" width="1" height="1" class="px-l"/>
+    <rect x="23" y="14" width="1" height="1" class="px-p"/>
+    <rect x="24" y="14" width="3" height="1" class="px-s"/>
+    <rect x="27" y="14" width="2" height="1" class="px-h"/>
+    <rect x="9" y="15" width="1" height="1" class="px-d"/>
+    <rect x="10" y="15" width="1" height="1" class="px-h"/>
+    <rect x="11" y="15" width="2" height="1" class="px-s"/>
+    <rect x="13" y="15" width="1" height="1" class="px-w"/>
+    <rect x="14" y="15" width="2" height="1" class="px-s"/>
+    <rect x="16" y="15" width="3" height="1" class="px-p"/>
+    <rect x="19" y="15" width="1" height="1" class="px-l"/>
+    <rect x="20" y="15" width="4" height="1" class="px-p"/>
+    <rect x="24" y="15" width="6" height="1" class="px-s"/>
+    <rect x="30" y="15" width="1" height="1" class="px-d"/>
+    <rect x="9" y="16" width="1" height="1" class="px-h"/>
+    <rect x="10" y="16" width="3" height="1" class="px-s"/>
+    <rect x="13" y="16" width="3" height="1" class="px-r"/>
+    <rect x="16" y="16" width="1" height="1" class="px-s"/>
+    <rect x="17" y="16" width="3" height="1" class="px-p"/>
+    <rect x="20" y="16" width="1" height="1" class="px-l"/>
+    <rect x="21" y="16" width="2" height="1" class="px-p"/>
+    <rect x="23" y="16" width="1" height="1" class="px-s"/>
+    <rect x="24" y="16" width="3" height="1" class="px-r"/>
+    <rect x="27" y="16" width="4" height="1" class="px-s"/>
+    <rect x="8" y="17" width="1" height="1" class="px-h"/>
+    <rect x="9" y="17" width="1" height="1" class="px-s"/>
+    <rect x="10" y="17" width="1" height="1" class="px-w"/>
+    <rect x="11" y="17" width="1" height="1" class="px-r"/>
+    <rect x="12" y="17" width="5" height="1" class="px-p"/>
+    <rect x="17" y="17" width="1" height="1" class="px-s"/>
+    <rect x="18" y="17" width="1" height="1" class="px-p"/>
+    <rect x="19" y="17" width="1" height="1" class="px-l"/>
+    <rect x="20" y="17" width="2" height="1" class="px-p"/>
+    <rect x="22" y="17" width="1" height="1" class="px-s"/>
+    <rect x="23" y="17" width="2" height="1" class="px-p"/>
+    <rect x="25" y="17" width="1" height="1" class="px-l"/>
+    <rect x="26" y="17" width="2" height="1" class="px-p"/>
+    <rect x="28" y="17" width="1" height="1" class="px-r"/>
+    <rect x="29" y="17" width="3" height="1" class="px-s"/>
+    <rect x="8" y="18" width="1" height="1" class="px-h"/>
+    <rect x="9" y="18" width="1" height="1" class="px-w"/>
+    <rect x="10" y="18" width="1" height="1" class="px-s"/>
+    <rect x="11" y="18" width="3" height="1" class="px-p"/>
+    <rect x="14" y="18" width="1" height="1" class="px-l"/>
+    <rect x="15" y="18" width="3" height="1" class="px-p"/>
+    <rect x="18" y="18" width="4" height="1" class="px-s"/>
+    <rect x="22" y="18" width="7" height="1" class="px-p"/>
+    <rect x="29" y="18" width="3" height="1" class="px-s"/>
+    <rect x="7" y="19" width="1" height="1" class="px-d"/>
+    <rect x="8" y="19" width="1" height="1" class="px-h"/>
+    <rect x="9" y="19" width="1" height="1" class="px-s"/>
+    <rect x="10" y="19" width="1" height="1" class="px-r"/>
+    <rect x="11" y="19" width="2" height="1" class="px-p"/>
+    <rect x="13" y="19" width="2" height="1" class="px-l"/>
+    <rect x="15" y="19" width="3" height="1" class="px-p"/>
+    <rect x="18" y="19" width="4" height="1" class="px-c"/>
+    <rect x="22" y="19" width="2" height="1" class="px-p"/>
+    <rect x="24" y="19" width="2" height="1" class="px-l"/>
+    <rect x="26" y="19" width="3" height="1" class="px-p"/>
+    <rect x="29" y="19" width="1" height="1" class="px-r"/>
+    <rect x="30" y="19" width="2" height="1" class="px-s"/>
+    <rect x="32" y="19" width="1" height="1" class="px-d"/>
+    <rect x="7" y="20" width="1" height="1" class="px-d"/>
+    <rect x="8" y="20" width="2" height="1" class="px-s"/>
+    <rect x="10" y="20" width="1" height="1" class="px-r"/>
+    <rect x="11" y="20" width="1" height="1" class="px-p"/>
+    <rect x="12" y="20" width="3" height="1" class="px-l"/>
+    <rect x="15" y="20" width="1" height="1" class="px-p"/>
+    <rect x="16" y="20" width="1" height="1" class="px-l"/>
+    <rect x="17" y="20" width="1" height="1" class="px-s"/>
+    <rect x="18" y="20" width="1" height="1" class="px-c"/>
+    <rect x="19" y="20" width="2" height="1" class="px-w"/>
+    <rect x="21" y="20" width="1" height="1" class="px-c"/>
+    <rect x="22" y="20" width="1" height="1" class="px-s"/>
+    <rect x="23" y="20" width="1" height="1" class="px-p"/>
+    <rect x="24" y="20" width="3" height="1" class="px-l"/>
+    <rect x="27" y="20" width="1" height="1" class="px-p"/>
+    <rect x="28" y="20" width="1" height="1" class="px-l"/>
+    <rect x="29" y="20" width="1" height="1" class="px-r"/>
+    <rect x="30" y="20" width="2" height="1" class="px-s"/>
+    <rect x="32" y="20" width="1" height="1" class="px-d"/>
+    <rect x="7" y="21" width="1" height="1" class="px-d"/>
+    <rect x="8" y="21" width="1" height="1" class="px-h"/>
+    <rect x="9" y="21" width="1" height="1" class="px-s"/>
+    <rect x="10" y="21" width="1" height="1" class="px-r"/>
+    <rect x="11" y="21" width="7" height="1" class="px-p"/>
+    <rect x="18" y="21" width="4" height="1" class="px-c"/>
+    <rect x="22" y="21" width="3" height="1" class="px-p"/>
+    <rect x="25" y="21" width="1" height="1" class="px-l"/>
+    <rect x="26" y="21" width="3" height="1" class="px-p"/>
+    <rect x="29" y="21" width="1" height="1" class="px-r"/>
+    <rect x="30" y="21" width="2" height="1" class="px-s"/>
+    <rect x="32" y="21" width="1" height="1" class="px-d"/>
+    <rect x="8" y="22" width="1" height="1" class="px-h"/>
+    <rect x="9" y="22" width="2" height="1" class="px-s"/>
+    <rect x="11" y="22" width="3" height="1" class="px-p"/>
+    <rect x="14" y="22" width="1" height="1" class="px-l"/>
+    <rect x="15" y="22" width="3" height="1" class="px-p"/>
+    <rect x="18" y="22" width="4" height="1" class="px-s"/>
+    <rect x="22" y="22" width="7" height="1" class="px-p"/>
+    <rect x="29" y="22" width="3" height="1" class="px-s"/>
+    <rect x="8" y="23" width="1" height="1" class="px-h"/>
+    <rect x="9" y="23" width="2" height="1" class="px-s"/>
+    <rect x="11" y="23" width="1" height="1" class="px-r"/>
+    <rect x="12" y="23" width="5" height="1" class="px-p"/>
+    <rect x="17" y="23" width="1" height="1" class="px-s"/>
+    <rect x="18" y="23" width="1" height="1" class="px-p"/>
+    <rect x="19" y="23" width="1" height="1" class="px-l"/>
+    <rect x="20" y="23" width="2" height="1" class="px-p"/>
+    <rect x="22" y="23" width="1" height="1" class="px-s"/>
+    <rect x="23" y="23" width="2" height="1" class="px-p"/>
+    <rect x="25" y="23" width="1" height="1" class="px-l"/>
+    <rect x="26" y="23" width="2" height="1" class="px-p"/>
+    <rect x="28" y="23" width="1" height="1" class="px-r"/>
+    <rect x="29" y="23" width="3" height="1" class="px-s"/>
+    <rect x="9" y="24" width="4" height="1" class="px-s"/>
+    <rect x="13" y="24" width="3" height="1" class="px-r"/>
+    <rect x="16" y="24" width="1" height="1" class="px-s"/>
+    <rect x="17" y="24" width="3" height="1" class="px-p"/>
+    <rect x="20" y="24" width="1" height="1" class="px-l"/>
+    <rect x="21" y="24" width="2" height="1" class="px-p"/>
+    <rect x="23" y="24" width="1" height="1" class="px-s"/>
+    <rect x="24" y="24" width="3" height="1" class="px-r"/>
+    <rect x="27" y="24" width="4" height="1" class="px-s"/>
+    <rect x="9" y="25" width="1" height="1" class="px-d"/>
+    <rect x="10" y="25" width="6" height="1" class="px-s"/>
+    <rect x="16" y="25" width="2" height="1" class="px-p"/>
+    <rect x="18" y="25" width="3" height="1" class="px-l"/>
+    <rect x="21" y="25" width="3" height="1" class="px-p"/>
+    <rect x="24" y="25" width="6" height="1" class="px-s"/>
+    <rect x="30" y="25" width="1" height="1" class="px-d"/>
+    <rect x="11" y="26" width="5" height="1" class="px-s"/>
+    <rect x="16" y="26" width="2" height="1" class="px-p"/>
+    <rect x="18" y="26" width="3" height="1" class="px-l"/>
+    <rect x="21" y="26" width="1" height="1" class="px-p"/>
+    <rect x="22" y="26" width="1" height="1" class="px-l"/>
+    <rect x="23" y="26" width="1" height="1" class="px-p"/>
+    <rect x="24" y="26" width="5" height="1" class="px-s"/>
+    <rect x="13" y="27" width="3" height="1" class="px-s"/>
+    <rect x="16" y="27" width="3" height="1" class="px-p"/>
+    <rect x="19" y="27" width="1" height="1" class="px-l"/>
+    <rect x="20" y="27" width="4" height="1" class="px-p"/>
+    <rect x="24" y="27" width="3" height="1" class="px-s"/>
+    <rect x="13" y="28" width="1" height="1" class="px-d"/>
+    <rect x="14" y="28" width="1" height="1" class="px-w"/>
+    <rect x="15" y="28" width="1" height="1" class="px-s"/>
+    <rect x="16" y="28" width="1" height="1" class="px-r"/>
+    <rect x="17" y="28" width="3" height="1" class="px-p"/>
+    <rect x="20" y="28" width="1" height="1" class="px-l"/>
+    <rect x="21" y="28" width="2" height="1" class="px-p"/>
+    <rect x="23" y="28" width="1" height="1" class="px-r"/>
+    <rect x="24" y="28" width="1" height="1" class="px-s"/>
+    <rect x="25" y="28" width="1" height="1" class="px-w"/>
+    <rect x="26" y="28" width="1" height="1" class="px-d"/>
+    <rect x="14" y="29" width="3" height="1" class="px-s"/>
+    <rect x="17" y="29" width="1" height="1" class="px-r"/>
+    <rect x="18" y="29" width="1" height="1" class="px-p"/>
+    <rect x="19" y="29" width="1" height="1" class="px-l"/>
+    <rect x="20" y="29" width="2" height="1" class="px-p"/>
+    <rect x="22" y="29" width="1" height="1" class="px-r"/>
+    <rect x="23" y="29" width="3" height="1" class="px-s"/>
+    <rect x="14" y="30" width="1" height="1" class="px-d"/>
+    <rect x="15" y="30" width="1" height="1" class="px-w"/>
+    <rect x="16" y="30" width="3" height="1" class="px-s"/>
+    <rect x="19" y="30" width="2" height="1" class="px-r"/>
+    <rect x="21" y="30" width="2" height="1" class="px-s"/>
+    <rect x="23" y="30" width="1" height="1" class="px-w"/>
+    <rect x="24" y="30" width="1" height="1" class="px-s"/>
+    <rect x="25" y="30" width="1" height="1" class="px-d"/>
+    <rect x="15" y="31" width="4" height="1" class="px-s"/>
+    <rect x="19" y="31" width="1" height="1" class="px-w"/>
+    <rect x="20" y="31" width="1" height="1" class="px-s"/>
+    <rect x="21" y="31" width="1" height="1" class="px-w"/>
+    <rect x="22" y="31" width="3" height="1" class="px-s"/>
+    <rect x="16" y="32" width="1" height="1" class="px-d"/>
+    <rect x="17" y="32" width="6" height="1" class="px-s"/>
+    <rect x="23" y="32" width="1" height="1" class="px-d"/>
+    <rect x="19" y="33" width="2" height="1" class="px-d"/>
+  </g>
+</svg>
+                <figcaption>тот самый клевер <span>нарисовал, как умел</span></figcaption>
+              </figure>
+              <p>Кулон — четырёхлистный клевер. Пароль, кстати, тоже. Я не суеверный, но если он правда приносит удачу, пусть работает. Розовые камни выбрал потому, что они тебе идут. Носи и не забывай, что тебя любят — даже в самые обычные дни.</p>
+              <p>Этот сайт — вторая часть подарка. Здесь только звёзды, свечи и слова, которые я обычно говорю слишком тихо. Спасибо, что ты рядом. За твой смех, за твоё «доброе утро», за умение превращать обычный вторник в приключение.</p>
+              <p>Пусть этот год будет к тебе особенно нежным: больше радости, меньше тревог, больше «хочу» и совсем чуть-чуть «надо». А я обещаю быть рядом — держать за руку.</p>
+              <p>С днём рождения. Ты — лучшая. Это не обсуждается.</p>
+            </div>
+            <p class="letter-card__sign">люблю тебя,<br><span>твой навсегда</span></p>
+            <span class="letter-card__wax" aria-hidden="true">М</span>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- ============ ПОДАРОК ============ -->
+    <section class="section gift-section" id="gift">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker reveal">и последнее</p>
+          <h2 class="reveal">Тут спрятан <em>подарок</em></h2>
+          <p class="section-sub reveal">Первый подарок уже у тебя в коробочке. Второй — здесь: его нельзя завернуть, зато можно открыть.</p>
+        </div>
+
+        <div class="gift-experience reveal" id="giftExperience">
+          <div class="gift-stage" id="giftStage">
+            <span class="gift-spark gift-spark--1" aria-hidden="true">✦</span>
+            <span class="gift-spark gift-spark--2" aria-hidden="true">✧</span>
+            <span class="gift-spark gift-spark--3" aria-hidden="true">✦</span>
+            <svg class="gift-box" viewBox="0 0 360 360" role="img" aria-label="Подарочная коробка с бантом">
+              <defs>
+                <linearGradient id="boxGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ff8fbd"/>
+                  <stop offset="1" stop-color="#c94a79"/>
+                </linearGradient>
+                <linearGradient id="lidGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffa8ca"/>
+                  <stop offset="1" stop-color="#e36090"/>
+                </linearGradient>
+                <linearGradient id="ribbonGrad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#ffe3a3"/>
+                  <stop offset="1" stop-color="#eeb152"/>
+                </linearGradient>
+                <radialGradient id="giftGlow">
+                  <stop offset="0" stop-color="#ffd27d" stop-opacity=".55"/>
+                  <stop offset="1" stop-color="#ffd27d" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <ellipse cx="180" cy="322" rx="148" ry="24" fill="url(#giftGlow)"/>
+              <ellipse cx="180" cy="318" rx="112" ry="16" fill="#000" opacity=".22"/>
+
+              <g class="gift__body">
+                <rect x="94" y="176" width="172" height="136" rx="10" fill="url(#boxGrad)"/>
+                <rect x="168" y="176" width="24" height="136" fill="url(#ribbonGrad)"/>
+                <rect x="94" y="176" width="172" height="10" fill="#000" opacity=".08"/>
+                <rect x="108" y="190" width="12" height="104" rx="6" fill="#fff" opacity=".14"/>
+              </g>
+
+              <g class="gift__lid">
+                <rect x="80" y="136" width="200" height="50" rx="10" fill="url(#lidGrad)"/>
+                <rect x="168" y="136" width="24" height="50" fill="url(#ribbonGrad)"/>
+                <rect x="80" y="136" width="200" height="8" rx="4" fill="#fff" opacity=".16"/>
+                <path d="M180 136c-26-34-52-28-48-10 4 16 28 14 48 10Z" fill="url(#ribbonGrad)" stroke="#d99b4e" stroke-width="2"/>
+                <path d="M180 136c26-34 52-28 48-10-4 16-28 14-48 10Z" fill="url(#ribbonGrad)" stroke="#d99b4e" stroke-width="2"/>
+                <circle cx="180" cy="136" r="13" fill="#ffe3a3" stroke="#d99b4e" stroke-width="2"/>
+              </g>
+
+              <g fill="#ffe3a3" opacity=".9">
+                <path d="M292 118l3 8 8 3-8 3-3 8-3-8-8-3 8-3 3-8Z"/>
+                <path d="M64 206l2 6 6 2-6 2-2 6-2-6-6-2 6-2 2-6Z" opacity=".7"/>
+              </g>
+            </svg>
+            <button class="btn btn--primary gift-cta" id="giftBtn" type="button">Открыть подарок</button>
+          </div>
+
+          <div class="gift-reveal" id="giftReveal" aria-hidden="true">
+            <span class="gift-reveal__heart" aria-hidden="true">♥</span>
+            <p class="script">с днём рождения, Машенька</p>
+            <h3 id="giftTitle" tabindex="-1">Я тебя люблю.</h3>
+            <p class="gift-reveal__text">Сильнее, чем умею говорить. Дольше, чем «навсегда».<br>И точно сильнее, чем ты любишь спорить с навигатором.</p>
+            <button class="btn btn--primary" id="hugBtn" type="button">Обнять меня</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p class="script foot__script">с любовью, только для тебя</p>
+    <button class="heart-btn" id="heartBtn" type="button" aria-label="Обнять">♥</button>
+    <p class="foot__meta">© 2026 · сделано вручную · для Маши</p>
+  </footer>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
